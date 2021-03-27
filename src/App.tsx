@@ -1,8 +1,8 @@
 import "antd/dist/antd.css";
-import { User } from "pages/user";
+import { Home } from "pages/home";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.scss";
+import "./assets/main.css";
 import { AppPath } from "./constants";
 import { FindAPartner } from "./pages/find-a-partner";
 import { Landing } from "./pages/landing";
@@ -27,8 +27,8 @@ function App() {
           <Route path={AppPath.SIGN_IN}>
             <SignIn />
           </Route>
-          <Route path={AppPath.USER}>
-            <User />
+          <Route path={AppPath.HOME}>
+            <Home />
           </Route>
           <Route path={AppPath.ROOT}>
             <Landing />

@@ -21,7 +21,7 @@ const initialValues: SignInAttempt = {
   password: "",
 };
 
-type SignInResponse = {
+export type SignInResponse = {
   user_id: number;
   user_type: "migrant" | "volunteer";
 };
@@ -44,7 +44,7 @@ export const SignInForm: React.FC = () => {
   const authState = useSelector(selectSignedInStatus);
 
   if (authState === "signed_in") {
-    return <Redirect to={AppPath.USER} />;
+    return <Redirect to={AppPath.HOME} />;
   }
 
   return (

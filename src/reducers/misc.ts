@@ -5,8 +5,11 @@ type MiscStore = {
 };
 
 const SELECT_PARTNER = "auth/SELECT_PARTNER";
+const REMOVE_PARTNER = "auth/REMOVE_PARTNER";
 
-type Action = { type: typeof SELECT_PARTNER; payload: { id: number } };
+type Action =
+  | { type: typeof SELECT_PARTNER; payload: number }
+  | { type: typeof REMOVE_PARTNER };
 
 const initialState: MiscStore = {
   selectedPartnerId: null,
@@ -20,14 +23,28 @@ export const miscReducer = (
     case SELECT_PARTNER:
       return {
         ...state,
-        selectedPartnerId: action.payload.id,
+        selectedPartnerId: action.payload,
+      };
+    case REMOVE_PARTNER:
+      return {
+        ...state,
+        selectedPartnerId: null,
       };
     default:
       return state;
   }
 };
 
-export const selectPartner = (id: number) => ({
-  type: SELECT_PARTNER,
-  payload: id,
-});
+export const selectPartner = (id: number) => {
+  return {
+    type: SELECT_PARTNER,
+    payload: id,
+  };
+};
+
+export const removePartner = () => {
+  return { type: REMOVE_PARTNER };
+};
+
+export const selectSelectedPartnerId = (state: Store) =>
+  state.miscReducer.selectedPartnerId;

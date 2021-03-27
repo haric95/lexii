@@ -3,9 +3,16 @@ import { Formik } from "formik";
 import { Form, Input, Select } from "formik-antd";
 import TextArea from "antd/lib/input/TextArea";
 import { LanguageSearch } from "./languageSearch";
+import { fetcher } from "fetcher";
+import { endpoints } from "endpoints";
+import { useDispatch, useSelector } from "react-redux";
+import { SignInResponse } from "./sign-in-form";
+import { selectSignedInStatus, setAuth } from "reducers/auth";
+import { Button } from "antd";
+import { Redirect } from "react-router";
+import { AppPath } from "../constants";
 
 type MigrantSignUpAttempt = {
-  username: string;
   name: string;
   about_me: string;
   language_id: number | null;
@@ -15,7 +22,6 @@ type MigrantSignUpAttempt = {
 };
 
 const initialValues: MigrantSignUpAttempt = {
-  username: "",
   name: "",
   about_me: "",
   language_id: null,
@@ -26,18 +32,36 @@ const initialValues: MigrantSignUpAttempt = {
 
 export const MigrantSignUpForm: React.FC = () => {
   const params = new URLSearchParams(window.location.search);
-  const handleSubmit = () => {};
-
+  const dispatch = useDispatch();
+  const authState = useSelector(selectSignedInStatus);
   const prefilledLangId = params.get("langId")
     ? parseInt(params.get("langId") as string)
     : null;
 
+  const handleSubmit = (values: MigrantSignUpAttempt) => {
+    fetcher
+      .post<SignInResponse>(endpoints.sign_up.migrant, values)
+      .then((response) => {
+        window.localStorage.setItem("userId", String(response.data.user_id));
+        dispatch(
+          setAuth({
+            userId: response.data.user_id,
+            signedInStatus: "signed_in",
+            userType: response.data.user_type,
+          })
+        );
+      });
+  };
+
+  if (authState === "signed_in") {
+    return <Redirect to={AppPath.HOME} />;
+  }
+
   return (
     <div className="SignUpForm">
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
-        {({ setFieldValue }) => (
+        {({ setFieldValue, submitForm }) => (
           <Form className="spaced-form">
-            <Input name="username" placeholder="username" />
             <Input name="name" placeholder="name" />
             <TextArea name="about" placeholder="about" />
             <LanguageSearch
@@ -56,6 +80,7 @@ export const MigrantSignUpForm: React.FC = () => {
             </Select>
             <Input name="email" placeholder="email" />
             <Input name="password" placeholder="password" type="password" />
+            <Button onClick={submitForm}>Sign-up</Button>
           </Form>
         )}
       </Formik>
