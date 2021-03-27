@@ -22,6 +22,11 @@ button {
   font-family: $font;
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5 {
+  font-weight: 600 !important;
+  margin: 0 0 16px 0;
+}
+
+p {
   margin: 0 0 16px 0;
 }

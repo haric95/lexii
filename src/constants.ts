@@ -7,4 +7,5 @@ export enum AppPath {
   VOLUNTEER = "/volunteer",
   BOOK = "/book",
   ADD_AVAILABILITY = "/add-availability",
+  FIND_A_PARTNER = "/find-a-partner",
 }

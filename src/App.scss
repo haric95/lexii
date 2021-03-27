@@ -7,6 +7,7 @@
 @import './components/page.scss';
 @import './components/button.scss';
 @import './components/hero.scss';
+@import './components/languageSearch.scss';
 
 // Utility classes
 // flex-box
@@ -60,4 +61,30 @@
 .full-width {
   width: calc(100% + 2 * #{$gutter-width});
   transform: translateX(-$gutter-width);
+}
+
+// UI interactivity
+
+
+
+.hover-move {
+  @include t-transition;
+
+  &:hover {
+    transform: translate(2px, -2px);
+  }
+}
+
+.spaced-form {
+  background-color: $secondary-color-100;
+  @include b-radius;
+  
+  padding: 20px;
+  & > * {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

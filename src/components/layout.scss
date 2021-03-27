@@ -5,7 +5,11 @@
 
   .page-body {
     flex-grow: 1;
-    margin-top: 50px;
+    margin-top: 80px;
     padding: 0 $gutter-width 20px;
+
+    &.with-hero {
+      margin-top: 50px;
+    }
   }
 }

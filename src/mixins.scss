@@ -26,3 +26,11 @@ $breakpoints: (
         + "Available breakpoints are: #{map-keys($breakpoints)}.";
   }
 }
+
+@mixin t-transition {
+  transition: transform 0.25s ease-in-out;
+}
+
+@mixin b-radius {
+  border-radius: 3px;
+}
