@@ -8,13 +8,6 @@ type Language = {
   name: string;
 };
 
-const DUMMY_OPTIONS = [
-  { value: "French", label: "French" },
-  { value: "Polish", label: "Polish" },
-  { value: "Sudanese", label: "Sudanese" },
-  { value: "Swahili", label: "Swahili" },
-];
-
 type LanguageSearchProps = {
   setId: (id: number) => void;
   prefilledId?: number | null;
