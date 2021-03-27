@@ -25,7 +25,12 @@ const initialValues: MigrantSignUpAttempt = {
 };
 
 export const MigrantSignUpForm: React.FC = () => {
+  const params = new URLSearchParams(window.location.search);
   const handleSubmit = () => {};
+
+  const prefilledLangId = params.get("langId")
+    ? parseInt(params.get("langId") as string)
+    : null;
 
   return (
     <div className="SignUpForm">
@@ -36,6 +41,7 @@ export const MigrantSignUpForm: React.FC = () => {
             <Input name="name" placeholder="name" />
             <TextArea name="about" placeholder="about" />
             <LanguageSearch
+              prefilledId={prefilledLangId}
               setId={(val) => setFieldValue("language_id", val)}
             />
             <Select

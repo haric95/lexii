@@ -36,7 +36,7 @@ export const FindAPartner = () => {
     if (authStatus === "signed_in") {
       history.push(AppPath.BOOK);
     } else {
-      history.push(AppPath.SIGN_UP);
+      history.push(`${AppPath.SIGN_UP}${window.location.search}&userId=${id}`);
     }
   };
 

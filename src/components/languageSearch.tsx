@@ -17,9 +17,11 @@ const DUMMY_OPTIONS = [
 
 type LanguageSearchProps = {
   setId: (id: number) => void;
+  prefilledId?: number | null;
 };
 
 export const LanguageSearch: React.FC<LanguageSearchProps> = ({
+  prefilledId = null,
   children,
   setId,
 }) => {
@@ -39,6 +41,18 @@ export const LanguageSearch: React.FC<LanguageSearchProps> = ({
       .get<{ languages: Language[] }>(endpoints.languages)
       .then((response) => setLanguages(response.data.languages));
   }, []);
+
+  useEffect(() => {
+    if (prefilledId && languages && languages?.length > 0) {
+      const prefilledLanguage = languages.find(
+        (language) => language.id === prefilledId
+      );
+      if (prefilledLanguage) {
+        setSearchValue(prefilledLanguage.name);
+        setId(prefilledLanguage.id);
+      }
+    }
+  }, [prefilledId, languages]);
 
   return (
     <div className="language-search">
