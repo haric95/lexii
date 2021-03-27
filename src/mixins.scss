@@ -1,0 +1,28 @@
+@mixin lower-box-shadow($color) {
+  box-shadow: 0 4px 12px $color;
+}
+
+@mixin upper-box-shadow($color) {
+  box-shadow: 0 -4px 12px $color;
+}
+
+@mixin full-box-shadow($color) {
+  box-shadow: 0 0 12px $color;
+}
+
+
+$breakpoints: (
+  'tablet': 992px,
+) !default;
+
+@mixin bp($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media  (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

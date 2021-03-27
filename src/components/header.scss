@@ -1,0 +1,10 @@
+.header {
+  height: 50px;
+  width: 100%;
+  border-bottom: 3px solid $primary-color-600;
+  background-color: $primary-color-600;
+  padding: 0 $gutter-width;
+  position: fixed;
+
+  @include upper-box-shadow($primary-color-600);
+}

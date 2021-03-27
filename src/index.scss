@@ -5,9 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+$font: 'Noto Sans', sans-serif;
+
+
+* {
+  box-sizing: border-box;
+  font-family: $font;
+}
+
+button {
+  border: 0;
+  font-family: $font;
 }
