@@ -32,7 +32,7 @@ function App() {
             <Home />
           </Route>
           <Route path={AppPath.ROOT}>
-            <Empty />
+            <Landing />
           </Route>
         </Switch>
       </Router>

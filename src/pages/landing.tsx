@@ -21,27 +21,7 @@ export const Landing: React.FC = () => {
 
   return (
     <Page isPublic headerType="publicMigrant" withHero>
-      <Hero>
-        <Row>
-          <Col span={12}>
-            <h1 className="primary-color">
-              Search for a language exchange partner
-            </h1>
-          </Col>
-          <Col span={12}>
-            <LanguageSearch setId={setSelectedLanguageId} />
-          </Col>
-          <Col span={12}></Col>
-          <Col span={12}>
-            <Button
-              disabled={setSelectedLanguageId === null}
-              onClick={handleNavigateToList}
-            >
-              Go
-            </Button>
-          </Col>
-        </Row>
-      </Hero>
+      <Hero />
       <div style={{ marginTop: 60 }}></div>
     </Page>
   );

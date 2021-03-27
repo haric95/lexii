@@ -12,7 +12,9 @@ export const Layout: React.FC<LayoutProps> = ({
   return (
     <div className="flex flex-col h-screen">
       <Header headerType={headerType} />
-      <div className={`flex-grow`}>{children}</div>
+      <div className={`flex-grow max-w-12xl mx-auto px-4 sm:px-6`}>
+        {children}
+      </div>
       <Footer />
     </div>
   );

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { Button } from "antd";
-import { Link } from "react-router-dom";
-import { AppPath } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { selectSignedInStatus, signOut } from "reducers/auth";
-import { AlertDialogOverlay } from "@chakra-ui/core";
+import { AppPath } from "../constants";
 
 export type HeaderProps = {
   headerType: "publicMigrant" | "publicVolunteer" | "loggedIn";
@@ -18,6 +16,8 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
     window.localStorage.removeItem("userId");
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  console.log(authState);
 
   return (
     <div className="relative bg-white">
@@ -60,12 +60,21 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
             </button>
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <Link
-              to={AppPath.SIGN_IN}
-              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              Sign in
-            </Link>
+            {authState === "signed_out" ? (
+              <Link
+                to={AppPath.SIGN_IN}
+                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              >
+                Sign in
+              </Link>
+            ) : (
+              <button
+                onClick={handleSignOut}
+                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              >
+                Sign in
+              </button>
+            )}
             {headerType === "publicMigrant" ? (
               <Link
                 to={AppPath.VOLUNTEER}
@@ -127,12 +136,18 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
               </div>
             </div>
             <div className="py-6 px-5 space-y-6">
-              <Link
-                to={AppPath.SIGN_IN}
-                className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium"
-              >
-                Sign in
-              </Link>
+              {authState === "signed_out" ? (
+                <Link
+                  to={AppPath.SIGN_IN}
+                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium"
+                >
+                  Sign in
+                </Link>
+              ) : (
+                <button className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium">
+                  Sign out
+                </button>
+              )}
               <div>
                 {headerType === "publicMigrant" ? (
                   <Link
@@ -142,12 +157,14 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
                     Sign up as a volunteer
                   </Link>
                 ) : (
-                  <Link
-                    to={AppPath.SIGN_UP}
-                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                  >
-                    Find a language partner
-                  </Link>
+                  authState === "signed_out" && (
+                    <Link
+                      to={AppPath.SIGN_UP}
+                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                    >
+                      Find a language partner
+                    </Link>
+                  )
                 )}
               </div>
             </div>

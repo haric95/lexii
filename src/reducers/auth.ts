@@ -3,7 +3,7 @@ import { Store } from "./rootReducer";
 type AuthStore = {
   userId: number | null;
   signedInStatus: "signed_out" | "pending" | "signed_in";
-  userType: "volunteer" | "migrant" | null;
+  userType: "Volunteer" | "Migrant" | null;
 };
 
 type SignInAttempt = {

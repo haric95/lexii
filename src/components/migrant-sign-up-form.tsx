@@ -16,7 +16,7 @@ type MigrantSignUpAttempt = {
   name: string;
   about_me: string;
   language_id: number | null;
-  interests: number[];
+  interests: string[];
   email_address: string;
   password: string;
 };

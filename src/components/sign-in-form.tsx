@@ -23,7 +23,7 @@ const initialValues: SignInAttempt = {
 
 export type SignInResponse = {
   user_id: number;
-  user_type: "migrant" | "volunteer";
+  user_type: "Migrant" | "Volunteer";
 };
 
 export const SignInForm: React.FC = () => {

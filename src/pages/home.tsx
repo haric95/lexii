@@ -22,7 +22,7 @@ export const Home: React.FC = () => {
   console.log(userType);
   return (
     <Page headerType="loggedIn" isPublic={false}>
-      {userType === "migrant" ? (
+      {userType === "Migrant" ? (
         id ? (
           <>
             <Button onClick={() => dispatch(removePartner())}>back</Button>

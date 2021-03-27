@@ -1,35 +1,32 @@
-import React from "react";
+import { Button } from "antd";
+import TextArea from "antd/lib/input/TextArea";
+import { endpoints } from "endpoints";
+import { fetcher } from "fetcher";
 import { Formik } from "formik";
 import { Form, Input, Select } from "formik-antd";
-import TextArea from "antd/lib/input/TextArea";
-import { LanguageSearch } from "./languageSearch";
-import { Redirect } from "react-router-dom";
-import { AppPath } from "../constants";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { selectSignedInStatus, setAuth } from "reducers/auth";
-import { Button } from "antd";
-import { fetcher } from "fetcher";
+import { AppPath } from "../constants";
 import { SignInResponse } from "./sign-in-form";
-import { endpoints } from "endpoints";
 
 type VolunteerSignUpAttempt = {
-  username: string;
   name: string;
   about_me: string;
   language_id: number | null;
-  interests: number[];
+  interests: string[];
   email_address: string;
-  password: string;
+  calendly_url: string;
 };
 
 const initialValues: VolunteerSignUpAttempt = {
-  username: "",
   name: "",
   about_me: "",
   language_id: null,
   interests: [],
   email_address: "",
-  password: "",
+  calendly_url: "",
 };
 
 export const VolunteerSignUpForm: React.FC = () => {
@@ -37,6 +34,7 @@ export const VolunteerSignUpForm: React.FC = () => {
   const authState = useSelector(selectSignedInStatus);
 
   const handleSubmit = (values: VolunteerSignUpAttempt) => {
+    const v = { ...values };
     fetcher
       .post<SignInResponse>(endpoints.sign_up.volunteer, values)
       .then((response) => {
@@ -72,8 +70,7 @@ export const VolunteerSignUpForm: React.FC = () => {
             >
               interests
             </Select>
-            <Input name="email" placeholder="email" />
-            <Input name="password" placeholder="password" type="password" />
+            <Input name="email_address" placeholder="email" />
             <Button onClick={submitForm}>Sign-up</Button>
           </Form>
         )}
