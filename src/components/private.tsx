@@ -7,7 +7,7 @@ import { selectSignedInStatus } from "../reducers/auth";
 const Private: React.FC = ({ children }) => {
   const authStatus = useSelector(selectSignedInStatus);
 
-  if (authStatus === "signed_in") return <Redirect to={AppPath.SIGN_IN} />;
+  if (authStatus === "signed_out") return <Redirect to={AppPath.SIGN_IN} />;
 
   return <React.Fragment>{children}</React.Fragment>;
 };
