@@ -6,6 +6,7 @@ import { selectSignedInStatus } from "../reducers/auth";
 
 const Private: React.FC = ({ children }) => {
   const authStatus = useSelector(selectSignedInStatus);
+  console.log(authStatus);
 
   if (authStatus === "signed_out") return <Redirect to={AppPath.SIGN_IN} />;
 

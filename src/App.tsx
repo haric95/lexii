@@ -1,4 +1,5 @@
 import "antd/dist/antd.css";
+import { User } from "pages/user";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path={AppPath.SIGN_IN}>
             <SignIn />
+          </Route>
+          <Route path={AppPath.USER}>
+            <User />
           </Route>
           <Route path={AppPath.ROOT}>
             <Landing />

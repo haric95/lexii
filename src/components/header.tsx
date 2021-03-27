@@ -2,12 +2,20 @@ import React from "react";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 import { AppPath } from "../constants";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSignedInStatus, signOut } from "reducers/auth";
 
 export type HeaderProps = {
   headerType: "publicMigrant" | "publicVolunteer" | "loggedIn";
 };
 
 export const Header: React.FC<HeaderProps> = () => {
+  const authState = useSelector(selectSignedInStatus);
+  const dispatch = useDispatch();
+  const handleSignOut = () => {
+    dispatch(signOut());
+    window.localStorage.removeItem("userId");
+  };
   return (
     <header className="header flex ai-center jc-sb">
       <Link to={AppPath.ROOT}>
@@ -21,9 +29,15 @@ export const Header: React.FC<HeaderProps> = () => {
             Become a volunteer
           </Button>
         </Link>
-        <Link to={AppPath.SIGN_IN}>
-          <Button type="default">Sign in</Button>
-        </Link>
+        {authState === "signed_in" ? (
+          <Button type="default" onClick={handleSignOut}>
+            Sign out
+          </Button>
+        ) : (
+          <Link to={AppPath.SIGN_IN}>
+            <Button type="default">Sign in</Button>
+          </Link>
+        )}
       </div>
     </header>
   );

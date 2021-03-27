@@ -12,8 +12,13 @@ type SignInAttempt = {
 };
 
 const SIGN_IN = "auth/SIGN_IN";
+const SET_AUTH = "auth/SET_AUTH";
+const SIGN_OUT = "auth/SIGN_OUT";
 
-type Action = { type: typeof SIGN_IN; payload: SignInAttempt };
+type Action =
+  | { type: typeof SIGN_IN; payload: SignInAttempt }
+  | { type: typeof SIGN_OUT }
+  | { type: typeof SET_AUTH; payload: Partial<AuthStore> };
 
 const initialState: AuthStore = {
   userId: null,
@@ -31,9 +36,29 @@ export const authReducer = (
         ...state,
         signedInStatus: "pending",
       };
+    case SET_AUTH:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    case SIGN_OUT:
+      return {
+        ...state,
+        userId: null,
+        signedInStatus: "signed_out",
+        userType: null,
+      };
     default:
       return state;
   }
+};
+
+export const setAuth = (payload: Partial<AuthStore>): Action => {
+  return { type: SET_AUTH, payload };
+};
+
+export const signOut = (): Action => {
+  return { type: SIGN_OUT };
 };
 
 export const selectSignedInStatus = (store: Store) =>
