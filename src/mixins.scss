@@ -1,13 +1,13 @@
 @mixin lower-box-shadow($color) {
-  box-shadow: 0 4px 12px $color;
+  box-shadow: 0 4px 12px rgba($color, 0.25);
 }
 
 @mixin upper-box-shadow($color) {
-  box-shadow: 0 -4px 12px $color;
+  box-shadow: 0 -4px 12px rgba($color, 0.25);
 }
 
 @mixin full-box-shadow($color) {
-  box-shadow: 0 0 12px $color;
+  box-shadow: 0 0 12px rgba($color, 0.1);
 }
 
 

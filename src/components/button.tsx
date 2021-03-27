@@ -12,5 +12,9 @@ export const Button: React.FC<ButtonProps> = ({
   size = "m",
   children,
 }) => {
-  return <button className="button">{children}</button>;
+  return (
+    <button className={`button ${inverted ? "inverted" : ""}`}>
+      {children}
+    </button>
+  );
 };

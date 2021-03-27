@@ -1,4 +1,13 @@
 .button {
   padding: 8px 15px;
   border-radius: 20px;
+  background-color: $primary-color-600;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+
+  &.inverted {
+    background-color: $light-color;
+
+    @include full-box-shadow($light-color)
+  }
 }

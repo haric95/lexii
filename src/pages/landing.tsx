@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Hero } from "../components/hero";
 import { Page } from "../components/page";
 import { selectSignedInStatus } from "../reducers/auth";
 
@@ -8,7 +9,11 @@ export const Landing: React.FC = () => {
 
   return (
     <Page isPublic headerType="publicMigrant">
-      <h1>{authStatus}</h1>
+      <Hero>
+        <h1 className="primary-color">
+          Search for a language exchange partner
+        </h1>
+      </Hero>
     </Page>
   );
 };

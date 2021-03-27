@@ -12,7 +12,7 @@ export const Header: React.FC<HeaderProps> = () => {
         <h1 className="white no-margin">LExI</h1>
       </div>
       <div className="left">
-        <Button>Become a volunteer</Button>
+        <Button inverted>Become a volunteer</Button>
       </div>
     </header>
   );

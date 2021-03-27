@@ -6,6 +6,7 @@
 @import './components/layout.scss';
 @import './components/page.scss';
 @import './components/button.scss';
+@import './components/hero.scss';
 
 // Utility classes
 // flex-box
@@ -20,8 +21,12 @@
     justify-content: space-between;
   }
 
-  &.jb-center {
+  &.jc-center {
     justify-content: center;
+  }
+
+  &.jc-end {
+    justify-content: flex-end;
   }
 
   &.ai-center {
@@ -34,8 +39,13 @@
 }
 
 // color
-.white {
-  color: white;
+.white,
+.light {
+  color: $light-color;
+}
+
+.primary-color {
+  color: $primary-color-600;
 }
 
 // layout / sizing
@@ -43,6 +53,11 @@
   margin: 0;
 }
 
-.full-width {
+.width-100 {
   width: 100%;
+}
+
+.full-width {
+  width: calc(100% + 2 * #{$gutter-width});
+  transform: translateX(-$gutter-width);
 }
