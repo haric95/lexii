@@ -10,11 +10,9 @@ export const Layout: React.FC<LayoutProps> = ({
   withHero = false,
 }) => {
   return (
-    <div className="layout">
+    <div className="flex flex-col h-screen">
       <Header headerType={headerType} />
-      <div className={`page-body ${withHero ? "with-hero" : ""}`}>
-        {children}
-      </div>
+      <div className={`flex-grow`}>{children}</div>
       <Footer />
     </div>
   );

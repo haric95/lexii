@@ -1,4 +1,5 @@
 import "antd/dist/antd.css";
+import { Empty } from "pages/empty";
 import { Home } from "pages/home";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -31,7 +32,7 @@ function App() {
             <Home />
           </Route>
           <Route path={AppPath.ROOT}>
-            <Landing />
+            <Empty />
           </Route>
         </Switch>
       </Router>

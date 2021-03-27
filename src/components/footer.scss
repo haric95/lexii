@@ -1,8 +1,0 @@
-.footer {
-  display: flex; 
-  padding: $gutter-width;
-  border-top: 3px solid $primary-color-600;
-  height: 50px;
-
-  @include upper-box-shadow(rgba($primary-color-600, 0.25));
-}
