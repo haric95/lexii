@@ -49,11 +49,11 @@ export const VolunteerDashboard: React.FC = ({}) => {
                     Our expectations of you as a volunteer
                   </p>
                   <ul className="list-disc">
-                    <li>be supportive and </li>
-                    <li>support our values and behaviours and show respect for the person you are speaking with</li>
-                    <li>respect the confidentiality of the person and do not divulge what's shared unless permitted</li>
-                    <li>stake responsibility for your own health and safety and be aware of how your actions could impact those who work with you</li>
-                    <li>some of our migrants don't have regular access to internet so please copy the text below and call them on their number</li>
+                    <li className="font-extrabold">Be supportive</li>
+                    <li>Support our values and behaviours and show respect for the person you are speaking with</li>
+                    <li>Respect the confidentiality of the person and do not divulge what's shared unless permitted</li>
+                    <li>Stake responsibility for your own health and safety and be aware of how your actions could impact those who work with you</li>
+                    <li>Some of our migrants don't have regular access to internet so please copy the text below and call them on their number</li>
                   </ul>
                   <p>
                   We welcome any feedback and encourage you to raise concerns or complaints directly with us.
