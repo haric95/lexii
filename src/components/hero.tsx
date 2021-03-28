@@ -1,7 +1,15 @@
-import React from "react";
+import { AppPath } from "../constants";
+import React, { useState } from "react";
+import { useHistory } from "react-router";
 import { LanguageSearch } from "./languageSearch";
 
 export const Hero: React.FC = ({ children }) => {
+  const history = useHistory();
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+
+  const handleNavigateToList = () => {
+    history.push(`${AppPath.FIND_A_PARTNER}?language=${selectedLanguage}`);
+  };
   return (
     <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
       <div className="text-center">
@@ -10,7 +18,7 @@ export const Hero: React.FC = ({ children }) => {
             Find a language mentor
             <br />
           </span>
-          <span className="block text-indigo-600 xl:inline">
+          <span className="block text-orange-600 xl:inline">
             in your community
           </span>
         </h1>
@@ -19,10 +27,17 @@ export const Hero: React.FC = ({ children }) => {
           cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
           aliqua.
         </p>
-        <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-          <div className="rounded-md shadow">
-            <LanguageSearch setId={() => {}} />
+        <div className="mt-5 max-w-md flex-col mx-auto sm:flex sm:justify-center md:mt-8">
+          <div className="rounded-md shadow mb-4" style={{ width: "100%" }}>
+            <LanguageSearch setLanguage={setSelectedLanguage} />
           </div>
+          <button
+            type="button"
+            className="mb-4 inline-flex justify-center items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={handleNavigateToList}
+          >
+            Search
+          </button>
         </div>
       </div>
     </main>

@@ -15,7 +15,7 @@ import { AppPath } from "../constants";
 type MigrantSignUpAttempt = {
   name: string;
   about_me: string;
-  language_id: number | null;
+  language: string | null;
   interests: string[];
   email_address: string;
   password: string;
@@ -24,7 +24,7 @@ type MigrantSignUpAttempt = {
 const initialValues: MigrantSignUpAttempt = {
   name: "",
   about_me: "",
-  language_id: null,
+  language: null,
   interests: [],
   email_address: "",
   password: "",
@@ -34,8 +34,8 @@ export const MigrantSignUpForm: React.FC = () => {
   const params = new URLSearchParams(window.location.search);
   const dispatch = useDispatch();
   const authState = useSelector(selectSignedInStatus);
-  const prefilledLangId = params.get("langId")
-    ? parseInt(params.get("langId") as string)
+  const prefilledLanguage = params.get("language")
+    ? params.get("language")
     : null;
 
   const handleSubmit = (values: MigrantSignUpAttempt) => {
@@ -65,8 +65,8 @@ export const MigrantSignUpForm: React.FC = () => {
             <Input name="name" placeholder="name" />
             <TextArea name="about" placeholder="about" />
             <LanguageSearch
-              prefilledId={prefilledLangId}
-              setId={(val) => setFieldValue("language_id", val)}
+              prefilledLanguage={prefilledLanguage}
+              setLanguage={(val) => setFieldValue("language", val)}
             />
             <Select
               name="interests"

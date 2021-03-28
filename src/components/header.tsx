@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectSignedInStatus, signOut } from "reducers/auth";
 import { AppPath } from "../constants";
+import Logo from "../assets/logo.svg";
 
 export type HeaderProps = {
   headerType: "publicMigrant" | "publicVolunteer" | "loggedIn";
@@ -17,20 +18,20 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  console.log(authState);
-
   return (
     <div className="relative bg-white">
       <div className="max-w-12xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <Link to={AppPath.ROOT}>
+            <Link
+              to={AppPath.ROOT}
+              style={{
+                transform: "scale(2.0) translateY(4px)",
+                transformOrigin: "left",
+              }}
+            >
               <span className="sr-only">Workflow</span>
-              <img
-                className="h-8 w-auto sm:h-10"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                alt=""
-              />
+              <img className="h-8 w-auto sm:h-10" src={Logo} alt="" />
             </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
@@ -72,20 +73,20 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
                 onClick={handleSignOut}
                 className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
               >
-                Sign in
+                Sign out
               </button>
             )}
             {headerType === "publicMigrant" ? (
               <Link
                 to={AppPath.VOLUNTEER}
-                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700 hover-text-white"
               >
                 Sign up as a volunteer
               </Link>
             ) : (
               <Link
                 to={AppPath.SIGN_UP}
-                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700 hover-text-white"
               >
                 Find a language partner
               </Link>
@@ -104,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
                 <div>
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    src="https://tailwindui.com/img/logos/workflow-mark-orange-600.svg"
                     alt="Workflow"
                   />
                 </div>
@@ -152,7 +153,7 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
                 {headerType === "publicMigrant" ? (
                   <Link
                     to={AppPath.VOLUNTEER}
-                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700"
                   >
                     Sign up as a volunteer
                   </Link>
@@ -160,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
                   authState === "signed_out" && (
                     <Link
                       to={AppPath.SIGN_UP}
-                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700 hover-text-white"
                     >
                       Find a language partner
                     </Link>

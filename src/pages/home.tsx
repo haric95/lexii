@@ -19,7 +19,6 @@ export const Home: React.FC = () => {
   };
   const id = useSelector(selectSelectedPartnerId);
   const userType = useSelector(selectUserType);
-  console.log(userType);
   return (
     <Page headerType="loggedIn" isPublic={false}>
       {userType === "Migrant" ? (

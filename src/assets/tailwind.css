@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.hover-text-white:hover {
+  color: white !important;
+}

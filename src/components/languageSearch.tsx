@@ -1,51 +1,62 @@
 import { AutoComplete } from "antd";
+import { SizeType } from "antd/lib/config-provider/SizeContext";
 import React, { useEffect, useState } from "react";
-import { fetcher } from "../fetcher";
-import { endpoints } from "../endpoints";
-
-type Language = {
-  id: number;
-  name: string;
-};
+import "./languageSearch.scss";
 
 type LanguageSearchProps = {
-  setId: (id: number) => void;
-  prefilledId?: number | null;
+  setLanguage: (id: string) => void;
+  prefilledLanguage?: string | null;
+  size?: SizeType;
+  className?: string;
 };
 
+const languages = [
+  "Spanish",
+  "English",
+  "Hindi/Urdu",
+  "Arabic",
+  "Bengali",
+  "Portuguese",
+  "Russian",
+  "Japanese",
+  "German",
+  "Punjabi",
+  "Wu",
+  "French",
+  "Telugu",
+  "Vietnamese",
+  "Marathi",
+  "Korean",
+  "Tamil",
+  "Italian",
+  "Turkish",
+  "Cantonese/Yue",
+  "Polish",
+  "Somali",
+];
+
 export const LanguageSearch: React.FC<LanguageSearchProps> = ({
-  prefilledId = null,
-  children,
-  setId,
+  prefilledLanguage = null,
+  setLanguage,
+  size = "large",
+  className = "",
 }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [languages, setLanguages] = useState<Language[] | null>(null);
 
   const suggestions = languages
     ? languages
-        .filter((option) =>
-          option.name.toLowerCase().includes(searchValue.toLowerCase())
+        .filter((language) =>
+          language.toLowerCase().includes(searchValue.toLowerCase())
         )
-        .map((option) => ({ label: option.name, value: option.name }))
+        .map((language) => ({ label: language, value: language }))
     : [];
 
   useEffect(() => {
-    fetcher
-      .get<{ languages: Language[] }>(endpoints.languages)
-      .then((response) => setLanguages(response.data.languages));
-  }, []);
-
-  useEffect(() => {
-    if (prefilledId && languages && languages?.length > 0) {
-      const prefilledLanguage = languages.find(
-        (language) => language.id === prefilledId
-      );
-      if (prefilledLanguage) {
-        setSearchValue(prefilledLanguage.name);
-        setId(prefilledLanguage.id);
-      }
+    if (prefilledLanguage && languages && languages?.length > 0) {
+      setSearchValue(prefilledLanguage);
+      setLanguage(prefilledLanguage);
     }
-  }, [prefilledId, languages]);
+  }, [prefilledLanguage, languages]);
 
   return (
     <div className="language-search">
@@ -57,12 +68,11 @@ export const LanguageSearch: React.FC<LanguageSearchProps> = ({
           onChange={(value) => {
             setSearchValue(value);
           }}
-          onSelect={(value, option) => {
-            const language = languages?.find(
-              (l) => l.name === value
-            ) as Language;
-            setId(language.id);
+          onSelect={(value) => {
+            setLanguage(value);
           }}
+          size={size}
+          className={className}
         />
       }
     </div>

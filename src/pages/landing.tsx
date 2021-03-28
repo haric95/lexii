@@ -22,7 +22,6 @@ export const Landing: React.FC = () => {
   return (
     <Page isPublic headerType="publicMigrant" withHero>
       <Hero />
-      <div style={{ marginTop: 60 }}></div>
     </Page>
   );
 };
