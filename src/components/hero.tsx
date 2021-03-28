@@ -34,7 +34,7 @@ export const Hero: React.FC = ({ children }) => {
             className="mb-4 inline-flex justify-center items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             onClick={handleNavigateToList}
           >
-            Search
+            Start learning
           </button>
         </div>
       </div>
