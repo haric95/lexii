@@ -2,6 +2,7 @@ import { endpoints } from "endpoints";
 import { fetcher } from "fetcher";
 import { VolunteerPreview } from "pages/find-a-partner";
 import React, { useEffect, useState } from "react";
+import Placeholder from "../assets/placeholder.png"
 
 type UserPreviewListProps = {
   handleCardSelect: (id: number) => void;
@@ -31,8 +32,8 @@ export const UserPreviewList: React.FC<UserPreviewListProps> = ({
             <li className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
               <div className="flex-1 flex flex-col p-8">
                 <img
-                  className="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=x7QNkZPUXj&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
+                  className="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full object-cover"
+                  src={partner.image ? `data:image/png;base64, ${partner.image}` : Placeholder} 
                 />
                 <h3 className="mt-6 text-left text-gray-900 text-sm font-medium">
                   {partner.name}
