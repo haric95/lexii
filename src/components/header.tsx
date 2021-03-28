@@ -86,7 +86,7 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
             ) : (
               authState === "signed_out" && (
                 <Link
-                  to={AppPath.SIGN_UP}
+                  to={AppPath.ROOT}
                   className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700 hover-text-white"
                 >
                   Find a language partner
@@ -167,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
                 ) : (
                   authState === "signed_out" && (
                     <Link
-                      to={AppPath.SIGN_UP}
+                      to={AppPath.ROOT}
                       className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700 hover-text-white"
                     >
                       Find a language partner
