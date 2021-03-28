@@ -84,12 +84,14 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
                 Sign up as a volunteer
               </Link>
             ) : (
-              <Link
-                to={AppPath.SIGN_UP}
-                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700 hover-text-white"
-              >
-                Find a language partner
-              </Link>
+              authState === "signed_out" && (
+                <Link
+                  to={AppPath.ROOT}
+                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700 hover-text-white"
+                >
+                  Find a language partner
+                </Link>
+              )
             )}
           </div>
         </div>
@@ -103,11 +105,16 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-orange-600.svg"
-                    alt="Workflow"
-                  />
+                  <Link
+                    to={AppPath.ROOT}
+                    style={{
+                      transform: "scale(2.0) translateY(4px)",
+                      transformOrigin: "left",
+                    }}
+                  >
+                    <span className="sr-only">Workflow</span>
+                    <img className="h-8 w-auto sm:h-10" src={Logo} alt="" />
+                  </Link>
                 </div>
                 <div className="-mr-2">
                   <button
@@ -160,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
                 ) : (
                   authState === "signed_out" && (
                     <Link
-                      to={AppPath.SIGN_UP}
+                      to={AppPath.ROOT}
                       className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700 hover-text-white"
                     >
                       Find a language partner

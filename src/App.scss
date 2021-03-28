@@ -76,9 +76,6 @@
 }
 
 .spaced-form {
-  background-color: $secondary-color-100;
-  @include b-radius;
-  
   padding: 20px;
   & > * {
     margin-bottom: 10px;
