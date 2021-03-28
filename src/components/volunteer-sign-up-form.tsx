@@ -1,10 +1,9 @@
-import { Button, Tooltip } from "antd";
-import TextArea from "antd/lib/input/TextArea";
+import { Tooltip } from "antd";
 import { endpoints } from "endpoints";
 import { fetcher } from "fetcher";
 import { Formik } from "formik";
 import { Form, Input, Select } from "formik-antd";
-import React, { useMemo } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { selectSignedInStatus, setAuth } from "reducers/auth";
@@ -19,6 +18,7 @@ type VolunteerSignUpAttempt = {
   interests: string[];
   email_address: string;
   calendly_url: string;
+  image: string;
 };
 
 const initialValues: VolunteerSignUpAttempt = {
@@ -28,6 +28,7 @@ const initialValues: VolunteerSignUpAttempt = {
   interests: [],
   email_address: "",
   calendly_url: "",
+  image: "",
 };
 
 const interests = [
@@ -46,6 +47,7 @@ const interests = [
 export const VolunteerSignUpForm: React.FC = () => {
   const dispatch = useDispatch();
   const authState = useSelector(selectSignedInStatus);
+  const [imageName, setImageName] = useState("");
 
   const selectOptions = useMemo(() => {
     return interests.map((interest) => ({ value: interest, label: interest }));
@@ -64,6 +66,26 @@ export const VolunteerSignUpForm: React.FC = () => {
           })
         );
       });
+  };
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleFileSelect = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    setter: any
+  ) => {
+    const image = event.target?.files?.[0];
+    if (image) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // use a regex to remove data url part
+        const base64String = (reader.result as string)
+          .replace("data:", "")
+          .replace(/^.+,/, "");
+        setter("image", base64String);
+      };
+      reader.readAsDataURL(image);
+    }
+    setImageName(event.currentTarget.value.replace(/.*[\/\\]/, ""));
   };
 
   if (authState === "signed_in") {
@@ -89,18 +111,8 @@ export const VolunteerSignUpForm: React.FC = () => {
             fugiat aliqua.
           </p>
           <div className="mt-5 max-w-md flex-col mx-auto sm:flex sm:justify-center md:mt-8">
-            {/* <div className="rounded-md shadow mb-4" style={{ width: "100%" }}>
-              <LanguageSearch setLanguage={setSelectedLanguage} />
-            </div>
-            <button
-              type="button"
-              className="mb-4 inline-flex justify-center items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              onClick={handleNavigateToList}
-            >
-              Search
-            </button> */}
             <Formik onSubmit={handleSubmit} initialValues={initialValues}>
-              {({ submitForm, setFieldValue }) => (
+              {({ submitForm, setFieldValue, values }) => (
                 <Form className="spaced-form">
                   <Input
                     name="name"
@@ -115,8 +127,8 @@ export const VolunteerSignUpForm: React.FC = () => {
                     size="large"
                     className="text-left mb-4"
                   />
-                  <TextArea
-                    name="about"
+                  <Input.TextArea
+                    name="about_me"
                     placeholder="about"
                     className="mb-4"
                     size="large"
@@ -148,7 +160,19 @@ export const VolunteerSignUpForm: React.FC = () => {
                     className="mb-4"
                     size="large"
                   ></Input>
-                  <Tooltip title="You'll be contacted by users via calendly to arrange a session.">
+                  <a
+                    href="https://calendly.com"
+                    style={{
+                      position: "absolute",
+                      transform: "translate(-91px, 41px)",
+                      fontSize: "12px",
+                      textDecoration: "underline",
+                    }}
+                    target="_blank"
+                  >
+                    Link to Calendly
+                  </a>
+                  <Tooltip title="You'll be contacted by users via Calendly to arrange a chat.">
                     <span
                       className="absolute"
                       style={{ transform: "translate(6px, 8px)" }}
@@ -156,7 +180,32 @@ export const VolunteerSignUpForm: React.FC = () => {
                       ❓
                     </span>
                   </Tooltip>
-                  {/* <Button onClick={submitForm}>Sign-up</Button> */}
+                  <div className="flex full-width items-center mb-4">
+                    <div className="flex full-width items-center justify-left bg-grey-lighter">
+                      <label className=" flex items-center px-2 py-2 text-orange rounded-lg shadow-lg tracking-wide border border-blue cursor-pointer hover:bg-blue hover:text-orange">
+                        <svg
+                          className="w-4 h-4 mr-2"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                        </svg>
+                        <span className="">Select an image</span>
+                        <input
+                          type="file"
+                          className="hidden"
+                          style={{ display: "none" }}
+                          accept="image/png, image/jpg"
+                          ref={inputRef}
+                          onChange={(event) => {
+                            handleFileSelect(event, setFieldValue);
+                          }}
+                        />
+                      </label>
+                    </div>
+                    <span className="ml-2">{imageName}</span>
+                  </div>
                   <button
                     type="button"
                     className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"

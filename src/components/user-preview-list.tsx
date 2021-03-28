@@ -64,8 +64,9 @@ export const UserPreviewList: React.FC<UserPreviewListProps> = ({
                 <div className="-mt-px flex divide-x divide-gray-200">
                   <div className="-ml-px w-0 flex-1 flex">
                     <a
-                      href="tel:+1-202-555-0170"
+                      href={partner.calendly_url}
                       className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
+                      target="_blank"
                     >
                       {/* Heroicon name: solid/phone */}
                       <svg

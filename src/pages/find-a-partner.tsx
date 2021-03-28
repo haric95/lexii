@@ -16,6 +16,7 @@ export type VolunteerPreview = {
   about_me: string;
   image: string;
   interests: string[];
+  calendly_url: string;
 };
 
 export const FindAPartner = () => {
