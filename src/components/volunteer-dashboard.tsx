@@ -133,6 +133,7 @@ export const VolunteerDashboard: React.FC = ({}) => {
             <a
               href="https://www.crisis.org.uk/get-involved/real-life-homeless-stories/?sb=date"
               className="text-base font-medium text-orange-600"
+              target="_blank"
             >
               {" "}
               Real life stories of the people you may support{" "}
