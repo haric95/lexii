@@ -121,7 +121,7 @@ export const VolunteerDashboard: React.FC = ({}) => {
               </div>
               <div className="border-t-2 border-gray-100 pt-6">
                 <dt className="text-base font-medium text-gray-500">
-                  Employees
+                  Team members
                 </dt>
                 <dd className="text-3xl font-extrabold tracking-tight text-gray-900">
                   5
