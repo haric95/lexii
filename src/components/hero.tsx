@@ -39,7 +39,7 @@ export const Hero: React.FC = ({ children }) => {
         </div>
       </div>
 
-<div className="py-20 bg-white">
+<div className="py-20 bg-white ">
   <div className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <h2 className="sr-only">Search for your language</h2>
     <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
@@ -52,7 +52,9 @@ export const Hero: React.FC = ({ children }) => {
           </div>
           <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Search for your language</p>
         </dt>
-
+        <dd className="mt-2 text-base text-gray-500">
+         In the search box above, choose the language that you speak the best.
+        </dd>
       </div>
 
       <div>
@@ -65,6 +67,9 @@ export const Hero: React.FC = ({ children }) => {
           </div>
           <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Choose your volunteer</p>
         </dt>
+        <dd className="mt-2 text-base text-gray-500">
+        From the list select the person you would like to practice your English with. 
+        </dd>
       </div>
 
       <div>
@@ -76,7 +81,8 @@ export const Hero: React.FC = ({ children }) => {
           </div>
           <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Select a time that works for you both</p>
         </dt>
-
+        <dd className="mt-2 text-base text-gray-500">
+        From the calendar choose when you will be available. Enter your phone number if you want the volunteer to call you.        </dd>
       </div>
     </dl>
   </div>
