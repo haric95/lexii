@@ -8,6 +8,7 @@ type LanguageSearchProps = {
   prefilledLanguage?: string | null;
   size?: SizeType;
   className?: string;
+  placeholder?: string;
 };
 
 const languages = [
@@ -40,6 +41,7 @@ export const LanguageSearch: React.FC<LanguageSearchProps> = ({
   setLanguage,
   size = "large",
   className = "",
+  placeholder,
 }) => {
   const [searchValue, setSearchValue] = useState("");
 
@@ -63,7 +65,7 @@ export const LanguageSearch: React.FC<LanguageSearchProps> = ({
       {
         <AutoComplete
           options={[{ options: suggestions }]}
-          placeholder={"Enter your primary language"}
+          placeholder={placeholder ? placeholder : "Enter your first language"}
           value={searchValue}
           onChange={(value) => {
             setSearchValue(value);

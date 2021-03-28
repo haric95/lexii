@@ -10,7 +10,7 @@ export const Layout: React.FC<LayoutProps> = ({
   withHero = false,
 }) => {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen relative">
       <Header headerType={headerType} />
       <div className={`flex-grow max-w-12xl mx-auto px-4 sm:px-6 mb-8`}>
         {children}

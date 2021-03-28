@@ -116,7 +116,7 @@ export const VolunteerSignUpForm: React.FC = () => {
                 <Form className="spaced-form">
                   <Input
                     name="name"
-                    placeholder="name"
+                    placeholder="Name"
                     className="mb-4"
                     size="large"
                   />
@@ -126,10 +126,11 @@ export const VolunteerSignUpForm: React.FC = () => {
                     }
                     size="large"
                     className="text-left mb-4"
+                    placeholder="Enter your mother tongue"
                   />
                   <Input.TextArea
                     name="about_me"
-                    placeholder="about"
+                    placeholder="About"
                     className="mb-4"
                     size="large"
                   />
@@ -150,7 +151,7 @@ export const VolunteerSignUpForm: React.FC = () => {
                   ></Select>
                   <Input
                     name="email_address"
-                    placeholder="email"
+                    placeholder="Email"
                     size="large"
                     className="mb-4"
                   />
@@ -191,7 +192,7 @@ export const VolunteerSignUpForm: React.FC = () => {
                         >
                           <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                         </svg>
-                        <span className="">Select an image</span>
+                        <span className="">Upload a profile picture</span>
                         <input
                           type="file"
                           className="hidden"
