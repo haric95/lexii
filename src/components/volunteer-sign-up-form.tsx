@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Tooltip } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import { endpoints } from "endpoints";
 import { fetcher } from "fetcher";
@@ -147,7 +147,15 @@ export const VolunteerSignUpForm: React.FC = () => {
                     placeholder="Calendly URL"
                     className="mb-4"
                     size="large"
-                  />
+                  ></Input>
+                  <Tooltip title="You'll be contacted by users via calendly to arrange a session.">
+                    <span
+                      className="absolute"
+                      style={{ transform: "translate(6px, 8px)" }}
+                    >
+                      ❓
+                    </span>
+                  </Tooltip>
                   {/* <Button onClick={submitForm}>Sign-up</Button> */}
                   <button
                     type="button"
