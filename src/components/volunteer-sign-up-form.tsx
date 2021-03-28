@@ -4,7 +4,7 @@ import { endpoints } from "endpoints";
 import { fetcher } from "fetcher";
 import { Formik } from "formik";
 import { Form, Input, Select } from "formik-antd";
-import React from "react";
+import React, { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { selectSignedInStatus, setAuth } from "reducers/auth";
@@ -30,14 +30,28 @@ const initialValues: VolunteerSignUpAttempt = {
   calendly_url: "",
 };
 
-const interest = [];
+const interests = [
+  "Films",
+  "Sports",
+  "Cooking",
+  "Food",
+  "Travel",
+  "Learning",
+  "Music",
+  "Art",
+  "Technology",
+  "Coffee/Tea",
+];
 
 export const VolunteerSignUpForm: React.FC = () => {
   const dispatch = useDispatch();
   const authState = useSelector(selectSignedInStatus);
 
+  const selectOptions = useMemo(() => {
+    return interests.map((interest) => ({ value: interest, label: interest }));
+  }, []);
+
   const handleSubmit = (values: VolunteerSignUpAttempt) => {
-    debugger;
     fetcher
       .post<SignInResponse>(endpoints.sign_up.volunteer, values)
       .then((response) => {
@@ -94,6 +108,13 @@ export const VolunteerSignUpForm: React.FC = () => {
                     className="mb-4"
                     size="large"
                   />
+                  <LanguageSearch
+                    setLanguage={(language) =>
+                      setFieldValue("language", language)
+                    }
+                    size="large"
+                    className="text-left mb-4"
+                  />
                   <TextArea
                     name="about"
                     placeholder="about"
@@ -101,17 +122,6 @@ export const VolunteerSignUpForm: React.FC = () => {
                     size="large"
                   />
                   <Select
-                    mode="multiple"
-                    allowClear
-                    style={{ width: "100%" }}
-                    placeholder="Please select"
-                    defaultValue={["a10", "c12"]}
-                    // onChange={handleChange}
-                    name="interests"
-                  >
-                    {["a10", "a20"]}
-                  </Select>
-                  {/* <Select
                     name="interests"
                     mode="multiple"
                     allowClear
@@ -120,16 +130,12 @@ export const VolunteerSignUpForm: React.FC = () => {
                     defaultValue={["a10", "c12"]}
                     size="large"
                     className="mb-4 text-left"
-                  >
-                    {["test", "test2"]}
-                  </Select> */}
-                  <LanguageSearch
-                    setLanguage={(language) =>
-                      setFieldValue("language", language)
-                    }
-                    size="large"
-                    className="text-left mb-4"
-                  />
+                    options={[
+                      {
+                        options: selectOptions,
+                      },
+                    ]}
+                  ></Select>
                   <Input
                     name="email_address"
                     placeholder="email"
