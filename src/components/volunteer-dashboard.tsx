@@ -86,21 +86,21 @@ export const VolunteerDashboard: React.FC = ({}) => {
                 Our expectations of you as a volunteer
               </p>
               <ul className="list-disc">
-                <li>be supportive and </li>
+                <li className="font-extrabold">Be supportive</li>
                 <li>
-                  support our values and behaviours and show respect for the
+                  Support our values and behaviours and show respect for the
                   person you are speaking with
                 </li>
                 <li>
-                  respect the confidentiality of the person and do not divulge
+                  Respect the confidentiality of the person and do not divulge
                   what's shared unless permitted
                 </li>
                 <li>
-                  stake responsibility for your own health and safety and be
+                  Stake responsibility for your own health and safety and be
                   aware of how your actions could impact those who work with you
                 </li>
                 <li>
-                  some of our migrants don't have regular access to internet so
+                  Some of our migrants don't have regular access to internet so
                   please copy the text below and call them on their number
                 </li>
               </ul>
@@ -119,7 +119,6 @@ export const VolunteerDashboard: React.FC = ({}) => {
                   2021
                 </dd>
               </div>
-
               <div className="border-t-2 border-gray-100 pt-6">
                 <dt className="text-base font-medium text-gray-500">
                   Employees
@@ -129,16 +128,16 @@ export const VolunteerDashboard: React.FC = ({}) => {
                 </dd>
               </div>
             </dl>
-            <div className="mt-10">
-              <a
-                href="https://www.crisis.org.uk/get-involved/real-life-homeless-stories/?sb=date"
-                className="text-base font-medium text-indigo-600"
-              >
-                {" "}
-                Learn more about how Crisis is changing the world{" "}
-                <span aria-hidden="true">&rarr;</span>{" "}
-              </a>
-            </div>
+          </div>
+          <div className="mt-10">
+            <a
+              href="https://www.crisis.org.uk/get-involved/real-life-homeless-stories/?sb=date"
+              className="text-base font-medium text-orange-600"
+            >
+              {" "}
+              Real life stories of the people you may support{" "}
+              <span aria-hidden="true">&rarr;</span>{" "}
+            </a>
           </div>
         </div>
       </div>

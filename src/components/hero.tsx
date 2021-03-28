@@ -34,53 +34,73 @@ export const Hero: React.FC = ({ children }) => {
             className="mb-4 inline-flex justify-center items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             onClick={handleNavigateToList}
           >
-            Search
+            Start learning
           </button>
         </div>
       </div>
 
-<div className="py-20 bg-white">
-  <div className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-    <h2 className="sr-only">Search for your language</h2>
-    <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
-      <div>
-        <dt>
-          <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-600 text-white">
-            <div className="font-extrabold text-lg">
-              <p>1</p>
+
+      <div className="relative bg-white py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
+          <div className="mt-12">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="pt-6">
+                <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
+                  <div className="-mt-6">
+                    <div>
+                      <span className="inline-flex items-center justify-center p-3 bg-orange-600 rounded-md shadow-lg text-white">
+                      <div className="font-extrabold text-lg">
+                        <p>1</p>
+                      </div>
+                      </span>
+                    </div>
+                    <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Search for your language</h3>
+                    <p className="mt-5 text-base text-gray-500">
+                    In the search box above, choose the language that you speak the best or consider to be your mother tongue
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
+                  <div className="-mt-6">
+                    <div>
+                      <span className="inline-flex items-center justify-center p-3 bg-orange-600 rounded-md shadow-lg text-white">
+                      <div className="font-extrabold text-lg">
+                        <p>2</p>
+                      </div>
+                      </span>
+                    </div>
+                    <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Choose your volunteer</h3>
+                    <p className="mt-5 text-base text-gray-500">
+                      Select the person you would like to practice your English with from the list of volunteers
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
+                  <div className="-mt-6">
+                    <div>
+                      <span className="inline-flex items-center justify-center p-3 bg-orange-600 rounded-md shadow-lg text-white">
+                      <div className="font-extrabold text-lg">
+                        <p>3</p>
+                      </div>
+                      </span>
+                    </div>
+                    <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">Select a time that works for you both</h3>
+                    <p className="mt-5 text-base text-gray-500">
+                    From the calendar choose when you will be available. Enter your phone number if you want the volunteer to call you
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Search for your language</p>
-        </dt>
-
+        </div>
       </div>
-
-      <div>
-        <dt>
-          <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-600 text-white">
-
-          <div className="font-extrabold text-lg">
-              <p>2</p>
-            </div>
-          </div>
-          <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Choose your volunteer</p>
-        </dt>
-      </div>
-
-      <div>
-        <dt>
-          <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-600 text-white">
-          <div className="font-extrabold text-lg">
-              <p>3</p>
-            </div>
-          </div>
-          <p className="mt-5 text-lg leading-6 font-medium text-gray-900">Select a time that works for you both</p>
-        </dt>
-
-      </div>
-    </dl>
-  </div>
-</div>
     </main>
   );
 };
