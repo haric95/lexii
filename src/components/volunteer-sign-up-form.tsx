@@ -7,6 +7,7 @@ import React, { useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { selectSignedInStatus, setAuth } from "reducers/auth";
+import { setName } from "reducers/misc";
 import { AppPath } from "../constants";
 import { LanguageSearch } from "./languageSearch";
 import { SignInResponse } from "./sign-in-form";
@@ -65,6 +66,7 @@ export const VolunteerSignUpForm: React.FC = () => {
             userType: response.data.user_type,
           })
         );
+        dispatch(setName(response.data.name));
       });
   };
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -106,7 +108,8 @@ export const VolunteerSignUpForm: React.FC = () => {
             </span>
           </h1>
           <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-           Make a big difference to your community. Build the english skills of those who share your mother tongue
+            Make a big difference to your community. Build the english skills of
+            those who share your mother tongue
           </p>
           <div className="mt-5 max-w-md flex-col mx-auto sm:flex sm:justify-center md:mt-8">
             <Formik onSubmit={handleSubmit} initialValues={initialValues}>

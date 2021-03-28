@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { selectSignedInStatus, signOut } from "reducers/auth";
 import { AppPath } from "../constants";
 import Logo from "../assets/logo.svg";
+import { setName } from "reducers/misc";
 
 export type HeaderProps = {
   headerType: "publicMigrant" | "publicVolunteer" | "loggedIn";
@@ -14,6 +15,7 @@ export const Header: React.FC<HeaderProps> = ({ headerType }) => {
   const dispatch = useDispatch();
   const handleSignOut = () => {
     dispatch(signOut());
+    dispatch(setName(""));
     window.localStorage.removeItem("userId");
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
